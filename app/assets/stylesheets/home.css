@@ -1,0 +1,26 @@
+main{
+  margin: 0 12rem;
+}
+#top{
+  background-color: #ccc;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+}
+#top textarea, #code_formatted{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+}
+
+#code_formatted{
+  display: none;
+  border-radius: 0.4rem;
+  background-color: darkgray;
+  margin-top: 1rem;
+  padding: 10px;
+}
+*:focus {
+  outline: none;
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
