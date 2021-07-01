@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class HomeReflex < ApplicationReflex
+class CodeReflex < ApplicationReflex
   # Add Reflex methods in this file.
   #
   # All Reflex instances include CableReady::Broadcaster and expose the following properties:
@@ -32,9 +32,9 @@ class HomeReflex < ApplicationReflex
   #
   # Learn more at: https://docs.stimulusreflex.com/reflexes#reflex-classes
 
-  def pick
-    require 'faker'
-    # @random_name =
-    morph "#random_name": Faker::Name.name
+  def capture
+    # require 'awesome_print'
+    morph :nothing
+    # morph "#code_formatted123": ap(params[:code].html_safe, html: true)
   end
 end
