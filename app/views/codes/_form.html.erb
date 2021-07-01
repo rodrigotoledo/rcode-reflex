@@ -1,0 +1,15 @@
+<div id="<%=dom_id(code) %>" class="mt-1 top">
+  <h1>Code and RECode... everyone need some help</h1>
+  <%= form_with(model: code) do |f| %>
+    <div class="input-group">
+      <%= f.text_field :user, class: 'form-control', placeholder: 'who you are?!' %>
+      <div class="input-group-append">
+        <%= f.submit 'Start RECoding', class: 'btn btn-danger btn-sm' %>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <%= f.text_area :code, class: 'form-control mt-1 mb-1', placeholder: 'Your code', rows: 10, data: { reflex: 'keyup->Code#capture', controller: 'codes'} %>
+    </div>
+  <% end %>
+</div>
