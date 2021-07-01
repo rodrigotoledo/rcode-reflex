@@ -55,17 +55,10 @@ export default class extends ApplicationController {
   // }
 
   captureSuccess(element, reflex, noop, reflexId) {
-    // element.innerText = '\nDanced like no one was watching! Was someone watching?'
-    console.log(element.value)
-    // console.log(reflex)
-    // console.log('kasdad')
-    // alert()
-    // element.innerText = "\nCouldn\'t dance!"
     const code_formatted = document.getElementById('code_formatted');
     if(element.value !== ''){
       code_formatted.style.display = 'block'
       code_formatted.innerText = element.value
-      // console.log(element.value)
     }else{
       code_formatted.style.display = 'none'
     }
