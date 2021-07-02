@@ -10,10 +10,8 @@ First of all you must have install `Docker` and have `docker-compose` as fuction
 
 - `docker-compose build`
 - `docker-compose run rcode_reflex_app bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`
-- `docker-compose up`
 - `docker-compose run rcode_reflex_app bundle install`
-  rspec for tests
-- `docker-compose run rcode_reflex_app bundle exec rails generate rspec:install`
+- `docker-compose up`
   of course packages too
 - `docker-compose run rcode_reflex_app yarn`
   ...will create the applicationn with current folder name
