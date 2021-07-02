@@ -3,7 +3,7 @@ class Code < ApplicationRecord
   validates :code, :user_uuid, :user, presence: true
 
   after_create_commit { broadcast_prepend_to "codes" }
-  after_update_commit { broadcast_update_to "codes" }
+  after_update_commit { broadcast_replace_to "codes" }
   after_destroy_commit { broadcast_remove_to "codes" }
 
   def self.pick_code

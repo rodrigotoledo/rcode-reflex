@@ -42,6 +42,7 @@ group :development, :test do
 
   gem 'faker', '~> 2.14'
   gem 'dotenv-rails'
+  gem 'pry'
 end
 
 group :test do

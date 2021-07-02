@@ -1,7 +1,9 @@
 <%= turbo_stream_from "codes" %>
+
 <%= turbo_frame_tag "code_form" do %>
   <%= render 'form', code: @code %>
 <% end %>
+
 <pre id="code_formatted" data-uuid="<%=current_user%>"></pre>
 
 <%= turbo_frame_tag "codes" do %>
