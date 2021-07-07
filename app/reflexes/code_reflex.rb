@@ -34,7 +34,9 @@ class CodeReflex < ApplicationReflex
 
   def capture
     # require 'awesome_print'
-    morph :nothing
-    # morph "#code_formatted123": ap(params[:code].html_safe, html: true)
+    # morph :nothing
+    require 'faker'
+    morph "#capture_name": Faker::Name.name
+    morph "#capture_email": Faker::Internet.email
   end
 end

@@ -4,6 +4,8 @@
   <%= render 'form', code: @code %>
 <% end %>
 
+<div id="capture_name"></div>
+<div id="capture_email"></div>
 <pre id="code_formatted" data-uuid="<%=current_user%>"></pre>
 
 <%= turbo_frame_tag "codes" do %>
