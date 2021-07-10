@@ -1,31 +1,53 @@
-version: "2"
+version: '3'
+networks:
+  development:
+  test:
+volumes:
+  db_data:
+  gem_cache:
+  shared_data:
 services:
-  app:
-    build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+  recode_redis:
+    image: redis:4.0-alpine
+    command: redis-server
+    networks:
+      - development
+      - test
     volumes:
-      - .:/usr/src/recode
-    expose:
-      - "3000"
+      - shared_data:/var/shared/redis
+  recode_db:
+    image: postgres:12.5-alpine
+    container_name: recode_db
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - shared_data:/var/shared
+    networks:
+      - development
+      - test
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+  recode_app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: recode_app
+    volumes:
+      - .:/var/app
+      - shared_data:/var/shared
+      - gem_cache:/usr/local/bundle/gems
+    networks:
+      - development
     ports:
       - 3000:3000
+    stdin_open: true
+    tty: true
+    env_file: .env.development
+    entrypoint: dev-entrypoint.sh
+    command: ['rails', 'server', '-p', '3000', '-b', '0.0.0.0']
+    environment:
+      RAILS_ENV: development
     depends_on:
-      - db
-      - redis
-  db:
-    image: postgres
-    volumes:
-      - ./tmp/db:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: password
-  redis:
-    image: redis:6.0.10
-    command: redis-server
-    environment:
-      REDIS_URL: redis://redis:6379/0
-    ports:
-      - "6379:6379"
-    volumes:
-      - "redis_data:/data"
-volumes:
-  redis_data:
+      - recode_db

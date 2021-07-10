@@ -33,8 +33,6 @@ class CodeReflex < ApplicationReflex
   # Learn more at: https://docs.stimulusreflex.com/reflexes#reflex-classes
 
   def capture
-    # require 'awesome_print'
-    # morph :nothing
     require 'faker'
     morph "#capture_name": Faker::Name.name
     morph "#capture_email": Faker::Internet.email

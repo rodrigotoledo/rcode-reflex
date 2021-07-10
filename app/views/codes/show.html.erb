@@ -1,0 +1,5 @@
+<%= turbo_stream_from "codes" %>
+<%= render partial: 'detail', locals: { code: @code } %>
+<%= turbo_frame_tag "codes" do %>
+  <%= render @codes %>
+<% end %>

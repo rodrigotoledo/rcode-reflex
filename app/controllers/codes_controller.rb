@@ -1,7 +1,12 @@
 class CodesController < ApplicationController
+  before_action :set_codes
   def index
-    @codes = Code.all
     @code = Code.new
+  end
+
+  def show
+    @code = Code.find(params[:id])
+    @code.pix!
   end
 
   def create
@@ -19,5 +24,9 @@ class CodesController < ApplicationController
   protected
     def code_params
       params.require(:code).permit(:code, :user)
+    end
+
+    def set_codes
+      @codes = Code.all
     end
 end

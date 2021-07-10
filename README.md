@@ -8,32 +8,28 @@
 
 First of all you must have install `Docker` and have `docker-compose` as fuctional command in your terminal. With that inside the project root directory, execute:
 
-- `docker-compose build`
-- `docker-compose run rcode_reflex_app bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`
-- `docker-compose run rcode_reflex_app bundle install`
-- `docker-compose up`
+- `docker-compose build && docker-compose up`
   of course packages too
-- `docker-compose run rcode_reflex_app yarn`
+- `docker-compose run recode_app yarn`
   ...will create the applicationn with current folder name
-- `docker-compose run rcode_reflex_app bundle exec rails db:drop db:create db:migrate`
+- `docker-compose run recode_app bundle exec rails db:drop db:create db:migrate`
   and finally create, migrate tables
-- `docker-compose run rcode_reflex_app bundle exec rails db:seed`
+- `docker-compose run recode_app bundle exec rails db:seed`
+- `docker-compose run recode_app bundle exec rails dev:cache`
   if you need populate with sample data
 
 # Coding and of course, testing...
 
 This project use `guard` and `rspec` as monitor and test engine of application, so everytime that you will be code something the application should have coverage of tests.
 
-- `docker-compose run rcode_reflex_app bundle exec guard`
+- `docker-compose run recode_app bundle exec guard`
   ...will execute `guard`, wait you code something in the project and then execute tests
 
 The coverage of your tests will be in the `coverage` directory
 
 ## Your code need to stay good and clean
 
-With simplecov in `rspec` we have coverage of code, but must important is keep the code with good practices. Rubocop garantee this, just run
-
-- `docker-compose run rcode_reflex_app rubocop . -A`
+With simplecov in `rspec` we have coverage of code, but must important is keep the code with good practices.
 
 # Execute something
 
@@ -43,7 +39,7 @@ As explained, the application run with `docker-compose` so execute the command a
 
 if you want interact in console run
 
-- `docker-compose run rcode_reflex_app bundle exec rails c`
+- `docker-compose run recode_app bundle exec rails c`
 
 # Development
 
